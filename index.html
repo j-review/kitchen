@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remodeling Kitchens</title>
+    <style>
+        /* Add some basic styling for better presentation */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 28px; /* Adjust the font size as needed */
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin-top: 60px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            margin-top: 60px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px; /* Adjust the font size as needed */
+            max-width: 650px; /* Set the maximum width for the paragraph */
+            margin: 0 auto; /* Center the paragraph */
+            margin-top: 10px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+        p1 {
+            font-size: 16px; /* Adjust the font size as needed */
+            max-width: 900px; /* Set the maximum width for the paragraph */
+            margin: 0 auto; /* Center the paragraph */
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+
+        figure {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        img {
+            width: auto; /* Adjust the width as needed */
+            height: 200px; /* Maintain aspect ratio */
+        }
+
+        video {
+            width: 820px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .larger-figure {
+            width: 500px; /* Adjust the width of the larger figure */
+        }
+
+        figcaption {
+            margin-top: 0px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Remodeling Kitchens: <br> Editing and Relighting Intricate Indoor Spaces from a Single Panorama</h1>
+
+<p> </p>
+
+
+<p>We propose a novel inverse rendering method for remodeling the existing kitchens from a single panorama.
+    Our method includes four key components: (1) HDR photography for indoor-outdoor panoramas, (2)
+    estimating complex 3D room layouts, (3) editing the furniture layout for the kitchen area,
+    and (4) global rendering method that relights the new kitchen space within the outdoor panorama.
+    Additionally, we contribute the Pano-Pano HDR dataset with 141 scenes and present a low-cost photometric calibration
+    for each HDR photograph.</p>
+
+<!--<p1>Guanzhou Ji, Azadeh O. Sawyer, Srinivasa G. Narasimhan-->
+<!--<br>Carnegie Mellon University</p1>-->
+
+<figure>
+    <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
+    <video controls>
+        <source src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/00_teaser/video_30ms.mp4" type="video/mp4">
+    </video>
+</figure>
+<p>An indoor panorama showcases a scene with kitchen and living spaces. The existing kitchen area is remodeled
+    with a new dark gray background wall and a new set of cabinets and appliances. The gray-blue cabinets reflect
+    the detailed scene on their surfaces, while the refrigerator with metal surfaces shows fewer reflective effects.
+    For the living space, the existing furniture is removed, and the room is refurnished with a new set of furniture.
+</p>
+<div>
+    <figure>
+        <figcaption>Captured Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/00_teaser/captured.jpg" alt="Image 1">
+    </figure>
+    <figure>
+        <figcaption>Virtual Rendered Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/00_teaser/rendered.png" alt="Image 2">
+    </figure>
+</div>
+<div>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/00_teaser/captured_pers.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/00_teaser/rendered_pers.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+</div>
+
+<h2>Overview</h2>
+<div>
+    <figure>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/workflow.jpg" alt="Image 1" style="width: auto; height: 300px;">
+    </figure>
+</div>
+<p>We present a complete pipeline from data collection to scene editing and relighting. First, we use
+    a single camera, the Ricoh Theta Z1, to capture paired indoor and outdoor panoramas. Second, the
+    indoor panorama is used to estimate the 3D room layout, while the outdoor panorama serves as a
+    360-degree environment map. Third, the kitchen area is segmented from the indoor panorama. Different
+    appliances and furniture objects are positioned along the kitchen wall. Finally, the new kitchen space
+    is rendered under global illumination with a complete scene model.
+
+</p>
+
+<h2>Editing Kitchen Layout</h2>
+<figure>
+    <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
+    <video controls>
+        <source src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/01_change_layout/video_30ms_all.mp4" type="video/mp4">
+    </video>
+</figure>
+<div>
+    <figure>
+        <figcaption>Layout 1</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/01_change_layout/rendered1.png" alt="Image 2">
+    </figure>
+    <figure>
+        <figcaption>Layout 2</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/01_change_layout/rendered2.png" alt="Image 3">
+    </figure>
+    <figure>
+        <figcaption>Layout 3</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/01_change_layout/rendered3.png" alt="Image 3">
+    </figure>
+</div>
+<div>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/01_change_layout/rendered_pers1.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/01_change_layout/rendered_pers2.png" alt="Image 2" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/01_change_layout/rendered_pers3.png" alt="Image 3" style="width: 400px; height: auto;">
+    </figure>
+</div>
+
+<h2>Kitchen 1</h2>
+<figure>
+    <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
+    <video controls>
+        <source src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_01/video_30ms.mp4" type="video/mp4">
+    </video>
+</figure>
+<div>
+    <figure>
+        <figcaption>Captured Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_01/captured.jpg" alt="Image 1">
+    </figure>
+    <figure>
+        <figcaption>Virtual Rendered Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_01/rendered.png" alt="Image 2">
+    </figure>
+</div>
+<div>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_01/captured_pers.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_01/rendered_pers.png" alt="Image 2" style="width: 400px; height: auto;">
+    </figure>
+</div>
+
+<h2>Kitchen 2</h2>
+<figure>
+    <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
+    <video controls>
+        <source src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_02/video_30ms.mp4" type="video/mp4">
+    </video>
+</figure>
+<div>
+    <figure>
+        <figcaption>Captured Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_02/captured.jpg" alt="Image 1">
+    </figure>
+    <figure>
+        <figcaption>Virtual Rendered Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_02/rendered.png" alt="Image 2">
+    </figure>
+</div>
+<div>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_02/captured_pers.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_02/rendered_pers.png" alt="Image 2" style="width: 400px; height: auto;">
+    </figure>
+</div>
+
+<h2>Kitchen 3</h2>
+<figure>
+    <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
+    <video controls>
+        <source src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_03/video_30ms.mp4" type="video/mp4">
+    </video>
+</figure>
+<div>
+    <figure>
+        <figcaption>Captured Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_03/captured.jpg" alt="Image 1">
+    </figure>
+    <figure>
+        <figcaption>Virtual Rendered Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_03/rendered.png" alt="Image 2">
+    </figure>
+</div>
+<div>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_03/captured_pers.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_03/rendered_pers.png" alt="Image 2" style="width: 400px; height: auto;">
+    </figure>
+</div>
+
+<h2>Kitchen 4</h2>
+<figure>
+    <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
+    <video controls>
+        <source src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_04/video_30ms.mp4" type="video/mp4">
+    </video>
+</figure>
+<div>
+    <figure>
+        <figcaption>Captured Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_04/captured.jpg" alt="Image 1">
+    </figure>
+    <figure>
+        <figcaption>Virtual Rendered Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_04/rendered.png" alt="Image 2">
+    </figure>
+</div>
+<div>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_04/captured_pers.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_04/rendered_pers.png" alt="Image 2" style="width: 400px; height: auto;">
+    </figure>
+</div>
+
+<h2>Kitchen 5</h2>
+<figure>
+    <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
+    <video controls>
+        <source src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_05/video_30ms.mp4" type="video/mp4">
+    </video>
+</figure>
+<div>
+    <figure>
+        <figcaption>Captured Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_05/captured.jpg" alt="Image 1">
+    </figure>
+    <figure>
+        <figcaption>Virtual Rendered Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_05/rendered.png" alt="Image 2">
+    </figure>
+</div>
+<div>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_05/captured_pers.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_05/rendered_pers.png" alt="Image 2" style="width: 400px; height: auto;">
+    </figure>
+</div>
+
+<h2>Kitchen 6</h2>
+<figure>
+    <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
+    <video controls>
+        <source src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_06/video_30ms.mp4" type="video/mp4">
+    </video>
+</figure>
+<div>
+    <figure>
+        <figcaption>Captured Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_06/captured.jpg" alt="Image 1">
+    </figure>
+    <figure>
+        <figcaption>Virtual Rendered Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_06/rendered.png" alt="Image 2">
+    </figure>
+</div>
+<div>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_06/captured_pers.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_06/rendered_pers.png" alt="Image 2" style="width: 400px; height: auto;">
+    </figure>
+</div>
+
+<h2>Kitchen 7</h2>
+<figure>
+    <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
+    <video controls>
+        <source src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_07/video_30ms.mp4" type="video/mp4">
+    </video>
+</figure>
+<div>
+    <figure>
+        <figcaption>Captured Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_07/captured.jpg" alt="Image 1">
+    </figure>
+    <figure>
+        <figcaption>Virtual Rendered Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_07/rendered.png" alt="Image 2">
+    </figure>
+</div>
+<div>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_07/captured_pers.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_07/rendered_pers.png" alt="Image 2" style="width: 400px; height: auto;">
+    </figure>
+</div>
+
+<h2>Kitchen 8</h2>
+<figure>
+    <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
+    <video controls>
+        <source src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_08/video_30ms.mp4" type="video/mp4">
+    </video>
+</figure>
+<div>
+    <figure>
+        <figcaption>Captured Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_08/captured.jpg" alt="Image 1">
+    </figure>
+    <figure>
+        <figcaption>Virtual Rendered Scene</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_08/rendered.png" alt="Image 2">
+    </figure>
+</div>
+<div>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_08/captured_pers.png" alt="Image 1" style="width: 400px; height: auto;">
+    </figure>
+    <figure>
+        <figcaption>Perspective View</figcaption>
+        <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/kitchen_08/rendered_pers.png" alt="Image 2" style="width: 400px; height: auto;">
+    </figure>
+</div>
+
+<h2>Pano-Pano HDR Dataset</h2>
+<figure>
+    <figcaption>Indoor Panoramas</figcaption>
+    <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/indoor_set.jpg" alt="Image 1">
+</figure>
+<figure>
+    <figcaption>Outdoor Panoramas</figcaption>
+    <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/outdoor_set.jpg" alt="Image 2">
+</figure>
+<p>In this study, we contribute a new Pano-Pano HDR dataset that includes 141 paired indoor and outdoor panoramas.
+    We introduce a low-cost photometric calibration for each HDR image and evaluate its accuracy compared to the
+    standard approach.
+ </p>
+
+<!--<h2>Source Code</h2>-->
+<!--To access the source code of this work, please visit <a href="https://github.com/Gzhji/vs_natural_ill">here</a>.-->
+
+<h2>Acknowledgement</h2>
+This work was partially supported by a gift from Zillow Group, USA.
+
+</body>
+</html>
