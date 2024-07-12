@@ -45,7 +45,7 @@
             margin: 0 auto; /* Center the paragraph */
             margin-top: 10px;
             margin-bottom: 50px;
-            text-align: left;
+            text-align: justify;
         }
 
         p1 {
@@ -158,12 +158,13 @@
 
 <p> </p>
 
-<p>We propose a novel inverse rendering method for remodeling the existing kitchens from a single panorama.
-    Our method includes four key components: (1) HDR photography for indoor-outdoor panoramas, (2)
-    estimating complex 3D room layouts, (3) editing the furniture layout for the kitchen area,
-    and (4) global rendering method that relights the new kitchen space within the outdoor panorama.
-    Additionally, we contribute the Pano-Pano HDR dataset with 140 scenes and present a low-cost photometric calibration
-    for each HDR photograph.</p>
+<p>We present a novel virtual staging application for kitchen remodeling from a single panorama. To ensure the realism
+    of the virtual rendered scene, we capture real-world High Dynamic Range (HDR) panoramas and recover the absolute
+    scene radiance for high-quality scene relighting. Our application consists of three key components: (1) HDR photography
+    for capturing paired indoor and outdoor panoramas, (2) automatic kitchen layout generation with new kitchen components,
+    and (3) an editable rendering pipeline that flexibly edits scene materials and relights the new virtual scene with global
+    illumination. Additionally, we contribute the Pano-Pano HDR dataset with 141 paired indoor and outdoor panoramas and
+    present a low-cost photometric calibration for panoramic HDR photography. </p>
 
 <figure>
     <figcaption>Comparison between the Existing Scene and the Edited Scene</figcaption>
@@ -213,12 +214,12 @@
         <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/workflow.jpg" alt="Image 1" style="width: auto; height: 300px;">
     </figure>
 </div>
-<p>We present a complete pipeline from data collection to scene editing and relighting. First, we use
-    a single camera, Ricoh Theta Z1, to capture paired indoor and outdoor panoramas. Second, the
-    indoor panorama is used to estimate the 3D room layout, while the outdoor panorama serves as a
-    360-degree environment map. Third, the kitchen area is segmented from the indoor panorama.
-    Appliances and furniture objects are positioned along the kitchen wall. Finally, the new kitchen space
-    is rendered under global illumination with a complete scene model.
+<p>Overview of Our Approach: We present a comprehensive pipeline from data collection to scene editing and relighting.
+    First, a single Ricoh Theta Z1 camera captures paired indoor and outdoor panoramas. Second, the indoor panorama
+    is used to estimate the 3D room layout, and the outdoor panorama provides a 360° environment map.
+    Third, the kitchen area is segmented from the indoor panorama, and new virtual kitchen components are positioned
+    along the kitchen wall. Finally, the new kitchen space is rendered under global illumination, and the single panorama
+    can be converted into 2D perspective views.
 </p>
 
 <h2>Editing Kitchen Layout</h2>
@@ -469,22 +470,17 @@
 <h2>Pano-Pano HDR Dataset</h2>
 <figure>
     <figcaption>Indoor Panoramas</figcaption>
-    <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/indoor_set.jpg" alt="Image 1" style="width: 400px; height: auto;">
+    <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/indoor_set.jpg" alt="Image 1" style="width: 820px; height: auto;">
 </figure>
 <figure>
     <figcaption>Outdoor Panoramas</figcaption>
-    <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/outdoor_set.jpg" alt="Image 2" style="width: 400px; height: auto;">
+    <img src="https://www.andrew.cmu.edu/user/gji/kitchen_remodel_web/img/outdoor_set.jpg" alt="Image 2" style="width: 820px; height: auto;">
 </figure>
-<p>In this study, we contribute a new Pano-Pano HDR dataset that includes 140 paired indoor and outdoor panoramas.
+<p>In this study, we contribute a new Pano-Pano HDR dataset that includes 141 paired indoor and outdoor panoramas.
     We introduce a low-cost photometric calibration for each HDR image and evaluate its accuracy compared to the
     standard approach.
  </p>
 
-<!--<h2>Source Code</h2>-->
-<!--To access the source code of this work, please visit <a href="https://github.com/Gzhji/vs_natural_ill">here</a>.-->
-
-<!--<h2>Acknowledgement</h2>-->
-<!--This work was partially supported by a gift from Zillow Group, USA.-->
 
 <script>
     document.querySelectorAll('.slider').forEach((slider) => {
